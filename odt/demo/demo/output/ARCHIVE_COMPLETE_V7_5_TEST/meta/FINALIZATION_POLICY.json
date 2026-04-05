@@ -1,0 +1,31 @@
+{
+  "SYSTEM_GLOBAL_ID": "SYSTEM_GLOBAL_ID__20260404T132152Z__45B90BD2F8D4",
+  "document_id": "DOC_D99E96A5E173B372",
+  "timestamp": "2026-04-04T13:21:52Z",
+  "freeze_policy": {
+    "mode": "FORENSIC_FINAL_FREEZE",
+    "description": "Final manifest and master hash are computed on frozen artefacts with explicit self-reference exclusions.",
+    "auto_referential_exclusions": [
+      "ARCHIVE_MANIFEST.json",
+      "CHAIN_INTEGRITY_MANIFEST.json",
+      "MASTER_SHA256.txt",
+      "logs/VALIDATION_FINALE.json"
+    ],
+    "archive_manifest_status": "FROZEN"
+  },
+  "extension_policy": {
+    "mode": "ADDITIVE_ONLY",
+    "rule": "Standard protocol files and fields remain unchanged; optional forensic enrichments are additive and non-blocking.",
+    "compatibility_target": [
+      "ODT_V7_5",
+      "META_FUSION_V9_2"
+    ]
+  },
+  "closure_exclusions": [
+    "ARCHIVE_MANIFEST.json",
+    "CHAIN_INTEGRITY_MANIFEST.json",
+    "MASTER_SHA256.txt",
+    "logs/VALIDATION_FINALE.json"
+  ],
+  "note": "Additive-only forensic enrichments do not alter protocol-required files or semantics."
+}
