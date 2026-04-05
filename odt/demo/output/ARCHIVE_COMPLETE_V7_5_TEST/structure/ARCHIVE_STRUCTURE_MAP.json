@@ -1,0 +1,34 @@
+{
+  "mimetype": {
+    "sha256": "714dbe370b0a7063669217d91b287566fe8babbc8599b629b24476ff81b83593",
+    "size": 39
+  },
+  "manifest.rdf": {
+    "sha256": "aeb297984b26a30bd9a26f304b39bc7d91a2645749b35e7bf3f44c4b9511dc75",
+    "size": 899
+  },
+  "styles.xml": {
+    "sha256": "26c82333c58e3f2a9b862141c965f6aa573c0351af32c261840453ac88d7c1d4",
+    "size": 20077
+  },
+  "settings.xml": {
+    "sha256": "5d58286fd1f0e61cf713a2bb31658dbb4e0151c820b7579bfea87825b9437259",
+    "size": 15349
+  },
+  "meta.xml": {
+    "sha256": "e2c4f933676f82b633cccbbe433412062978e4a6863ae31ac899f2be2d46a668",
+    "size": 995
+  },
+  "Thumbnails/thumbnail.png": {
+    "sha256": "39f77189f71b4ac622492d8eec8a4e4eb256c7745e2d0111a15e711af3b96b14",
+    "size": 21528
+  },
+  "content.xml": {
+    "sha256": "ec97d08bb76cb1ad2476bc2ddb8649a89e75a3c672134d2653cf6cd4d3fc1a02",
+    "size": 5396477
+  },
+  "META-INF/manifest.xml": {
+    "sha256": "ea3ba617c4e0918b064fbd592b6d42398201881cc6cff4eecc0fa761bcf8c9ef",
+    "size": 1061
+  }
+}

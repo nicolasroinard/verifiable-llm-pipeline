@@ -1,0 +1,42 @@
+{
+  "SYSTEM_GLOBAL_ID": "SYSTEM_GLOBAL_ID__20260404T132152Z__45B90BD2F8D4",
+  "document_id": "DOC_D99E96A5E173B372",
+  "timestamp": "2026-04-04T13:21:52Z",
+  "freeze_policy": {
+    "mode": "FORENSIC_FINAL_FREEZE",
+    "description": "Final manifest and master hash are computed on frozen artefacts with explicit self-reference exclusions.",
+    "auto_referential_exclusions": [
+      "ARCHIVE_MANIFEST.json",
+      "CHAIN_INTEGRITY_MANIFEST.json",
+      "MASTER_SHA256.txt",
+      "logs/VALIDATION_FINALE.json"
+    ],
+    "archive_manifest_status": "FROZEN"
+  },
+  "checks": {
+    "integrite_complete": true,
+    "tracabilite_complete": true,
+    "reconstruction_sha256_valide": true,
+    "conformite_system_core": true,
+    "odt_native_preserved": true,
+    "utc_iso_8601": true
+  },
+  "details": {
+    "archive_manifest_complete": true,
+    "recorded_archive_file_count": 27,
+    "actual_archive_file_count": 27,
+    "chain_manifest_entries": 23,
+    "chain_manifest_mismatches": [],
+    "master_sha_expected": "c1ab5121babe88ea8d7f3a302c98e8d112354ea2a7aafde49e0c89cc0942237e",
+    "master_sha_actual": "c1ab5121babe88ea8d7f3a302c98e8d112354ea2a7aafde49e0c89cc0942237e",
+    "crypto_scope_exclusions": [
+      "ARCHIVE_MANIFEST.json",
+      "CHAIN_INTEGRITY_MANIFEST.json",
+      "MASTER_SHA256.txt",
+      "logs/VALIDATION_FINALE.json"
+    ],
+    "final_inventory_count": 27,
+    "self_reference_policy_explicit": true
+  },
+  "status": "VALID"
+}
