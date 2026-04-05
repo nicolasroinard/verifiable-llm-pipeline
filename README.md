@@ -6,9 +6,9 @@ Turning probabilistic LLM outputs into structured, traceable, and verifiable sys
 
 ## Overview
 
-This repository contains a simplified and runnable version of a multi-layer pipeline designed to process complex document corpora.
+This repository provides a runnable subset of a larger system designed to process complex document corpora.
 
-The goal is not to improve prompts, but to build a system layer that makes AI outputs reliable.
+The goal is not to improve prompts, but to build a system layer that makes AI outputs reliable, auditable, and reproducible.
 
 ---
 
@@ -28,16 +28,16 @@ Building a system layer that enforces structure, traceability, and validation.
 
 ---
 
-## Pipeline Structure
+## What is currently implemented
 
-The pipeline is organized into distinct layers, each with a clear responsibility.
+This repository exposes a runnable subset of the system:
 
 ### ODT — Document Ingestion & Structuring
 
 * Ingests raw `.odt` documents
 * Segments and structures content
 * Produces a traceable and reconstructible archive
-* Preserves source integrity (no destructive transformation)
+* Preserves source integrity
 
 Entry point:
 
@@ -51,7 +51,7 @@ odt/run_odt_v75.py
 
 * Merges structured documents into a global corpus
 * Builds a graph representation of relationships
-* Creates a unified data layer for downstream processing
+* Produces a unified structured data layer
 
 Entry point:
 
@@ -61,19 +61,31 @@ meta/run_meta_fusion.py
 
 ---
 
-## Full Pipeline (Architecture Overview)
+## Full System Architecture
 
 The complete system is composed of multiple layers:
 
-* GLOBAL PIPELINE — End-to-End Processing Architecture
-* ODT — Document Ingestion & Structuring Layer
-* META — Corpus & Graph Construction Layer
-* REVELATION — Deterministic Analysis & Transformation Layer
-* ENGINE — Output Structuring & Projection Layer
-* PROOF / REANCHOR — Validation & Grounding Layer
-* STRUCTURED EXTRACTION — Semantic Extraction Layer
+### Core processing
 
-This repository currently provides a runnable subset of this architecture (ODT + META).
+* GLOBAL PIPELINE — End-to-End Orchestration
+* ODT — Document Ingestion & Structuring
+* META — Corpus & Graph Construction
+* REVELATION — Deterministic Analysis
+* ENGINE — Output Structuring
+
+### Validation & grounding
+
+* PROOF — Evidence Reconstruction
+* REANCHOR — Source Grounding
+
+### Advanced system layers
+
+* COGNITIVE — Controlled Reasoning & Validation
+* SESSION_MANAGER — Orchestration & Monitoring
+* MEMORY_GRAPH_AGENT — Memory & Consistency
+
+This repository currently exposes a runnable subset (ODT + META).
+Other layers are part of ongoing development.
 
 ---
 
@@ -106,13 +118,15 @@ This example is intentionally simple.
 
 The pipeline transforms raw documents into structured and traceable representations that can be audited and reconstructed.
 
-The system is designed to scale to large, multi-document corpora.
-
 ---
 
 ## How to Run
 
 ```bash
+# Install dependencies
+pip install -r odt/requirements.txt
+pip install -r meta/requirements.txt
+
 # Step 1 — Ingest and structure documents
 python odt/run_odt_v75.py
 
@@ -140,7 +154,7 @@ Running the pipeline produces:
 * Full traceability
 * No implicit inference
 * Reproducible outputs
-* Strict separation between data and system logic
+* Separation between data and system logic
 
 ---
 
