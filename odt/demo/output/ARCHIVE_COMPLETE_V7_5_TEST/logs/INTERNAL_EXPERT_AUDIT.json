@@ -1,0 +1,52 @@
+{
+  "audit_type": "INTERNAL_EXPERT_AUDIT",
+  "status": "VALID",
+  "reproducible_mode": false,
+  "protocol_integrity": {
+    "archive_entries": 9,
+    "hashed_archive_entries": 8,
+    "paragraphs": 10392,
+    "segments": 398,
+    "final_validation_status": "VALID"
+  },
+  "closure_model": {
+    "freeze_policy": {
+      "mode": "FORENSIC_FINAL_FREEZE",
+      "description": "Final manifest and master hash are computed on frozen artefacts with explicit self-reference exclusions.",
+      "auto_referential_exclusions": [
+        "ARCHIVE_MANIFEST.json",
+        "CHAIN_INTEGRITY_MANIFEST.json",
+        "MASTER_SHA256.txt",
+        "logs/VALIDATION_FINALE.json"
+      ],
+      "archive_manifest_status": "FROZEN"
+    },
+    "extension_policy": {
+      "mode": "ADDITIVE_ONLY",
+      "rule": "Standard protocol files and fields remain unchanged; optional forensic enrichments are additive and non-blocking.",
+      "compatibility_target": [
+        "ODT_V7_5",
+        "META_FUSION_V9_2"
+      ]
+    },
+    "self_referential_exclusions_documented": true
+  },
+  "traceability_model": {
+    "paragraph_provenance_mode": "direct",
+    "segment_provenance_mode": "derived",
+    "reconstructibility_documented": true,
+    "orphan_checks": {
+      "paragraph_count": 10392,
+      "segment_count": 398,
+      "orphan_segment_paragraph_refs": [],
+      "has_orphans": false
+    }
+  },
+  "summary": {
+    "archive_manifest_path": "ARCHIVE_MANIFEST.json",
+    "chain_manifest_path": "CHAIN_INTEGRITY_MANIFEST.json",
+    "master_sha_path": "MASTER_SHA256.txt",
+    "boot_summary_path": "bootstrap/DOSSIER_BOOT_SUMMARY.txt",
+    "archive_output_dir": "demo/output_run/ARCHIVE_COMPLETE_V7_5_TEST"
+  }
+}
