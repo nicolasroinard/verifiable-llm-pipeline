@@ -6,132 +6,197 @@ Turning probabilistic LLM outputs into structured, traceable, and verifiable sys
 
 ## Overview
 
-This repository provides a runnable subset of a larger system designed to process complex document corpora.
+This repository presents a runnable subset of a larger AI-assisted system designed to process complex document corpora.
 
-The goal is not to improve prompts, but to build a system layer that makes AI outputs reliable, auditable, and reproducible.
+The goal is not to improve prompts.
+
+The goal is to build a system layer that makes LLM-based workflows more reliable, auditable, traceable, and reproducible.
 
 ---
 
 ## Why
 
-LLM outputs are inherently probabilistic and difficult to verify.
+LLM outputs are probabilistic by nature.
 
-When applied to complex or multi-document contexts, this leads to:
+When applied to long-context or multi-document workflows, this often creates:
 
-* loss of coherence
-* lack of traceability
-* difficulty in validating results
+- loss of coherence
+- fragmented memory
+- lack of traceability
+- unstable outputs
+- difficulty validating results
 
 This project explores a different approach:
 
-Building a system layer that enforces structure, traceability, and validation.
+> instead of relying on better prompts, build a structured system around the LLM workflow.
 
 ---
 
-## What is currently implemented
+## Core idea
 
-This repository exposes a runnable subset of the system:
+The system transforms raw document inputs into structured, traceable artifacts through separated processing layers.
 
-### ODT — Document Ingestion & Structuring
+```text
+Raw documents
+↓
+Document ingestion
+↓
+Corpus structuring
+↓
+Graph construction
+↓
+Deterministic analysis
+↓
+Structured outputs
+↓
+Validation / audit
+```
 
-* Ingests raw `.odt` documents
-* Segments and structures content
-* Produces a traceable and reconstructible archive
-* Preserves source integrity
+The key design principle is:
+
+> recognize, structure and validate — do not freely infer.
+
+---
+
+## Implemented layers
+
+This repository currently exposes the main document-processing layers.
+
+### 01 — ODT: Document Ingestion & Structuring
+
+- ingests raw `.odt` documents
+- segments and structures content
+- preserves source integrity
+- produces traceable document archives
 
 Entry point:
 
 ```text
-odt/run_odt_v75.py
+01_ODT_Document_Ingestion_and_Structuring_Layer/run_odt_v75.py
 ```
 
 ---
 
-### META — Corpus & Graph Construction
+### 02 — META: Corpus & Graph Construction
 
-* Merges structured documents into a global corpus
-* Builds a graph representation of relationships
-* Produces a unified structured data layer
+- merges structured documents into a global corpus
+- builds graph-like relationships between segments, nodes and references
+- creates a structured data layer for downstream processing
 
 Entry point:
 
 ```text
-meta/run_meta_fusion.py
+02_META_Corpus_and_Graph_Construction_Layer/run_meta_fusion.py
 ```
 
 ---
 
-## Full System Architecture
+### 03 — REVELATION: Deterministic Analysis & Transformation
 
-The complete system is composed of multiple layers:
+- performs controlled analysis on structured corpus artifacts
+- separates observation from interpretation
+- prepares structured analysis units for downstream projection
 
-### Core processing
+Status:
 
-* GLOBAL PIPELINE — End-to-End Orchestration
-* ODT — Document Ingestion & Structuring
-* META — Corpus & Graph Construction
-* REVELATION — Deterministic Analysis
-* ENGINE — Output Structuring
-
-### Validation & grounding
-
-* PROOF — Evidence Reconstruction
-* REANCHOR — Source Grounding
-
-### Advanced system layers
-
-* COGNITIVE — Controlled Reasoning & Validation
-* SESSION_MANAGER — Orchestration & Monitoring
-* MEMORY_GRAPH_AGENT — Memory & Consistency
-
-This repository currently exposes a runnable subset (ODT + META).
-Other layers are part of ongoing development.
+```text
+public subset / in progress
+```
 
 ---
 
-## Repository Structure
+### 04 — ENGINE: Output Structuring & Projection
+
+- structures downstream outputs from validated analysis units
+- keeps output generation separated from source ingestion and graph construction
+- supports the system’s validation-oriented workflow
+
+Status:
 
 ```text
-odt/
-  run_odt_v75.py
-  src/
-  demo/
-    input/
-      example_improved.odt
+public subset / in progress
+```
 
-meta/
-  run_meta_fusion.py
-  src/
+---
+
+## Full system direction
+
+The broader system includes additional validation and grounding layers:
+
+- PROOF — evidence reconstruction
+- REANCHOR — source grounding
+- COGNITIVE — controlled reasoning and validation
+- SESSION_MANAGER — orchestration and monitoring
+- MEMORY_GRAPH_AGENT — memory and consistency
+
+These layers are part of the broader architecture, but are not fully exposed here yet.
+
+---
+
+## Repository structure
+
+```text
+verifiable-llm-pipeline/
+  README.md
+
+  01_ODT_Document_Ingestion_and_Structuring_Layer/
+    run_odt_v75.py
+    requirements.txt
+    src/
+    demo/
+      input/
+
+  02_META_Corpus_and_Graph_Construction_Layer/
+    run_meta_fusion.py
+    requirements.txt
+    src/
+
+  03_REVELATION_Deterministic_Analysis_and_Transformation_Layer/
+    README.md
+    src/
+
+  04_ENGINE_Output_Structuring_and_Projection_Layer/
+    README.md
+    src/
 ```
 
 ---
 
 ## Demo
 
-A minimal example document is provided:
+A minimal demo input is included in the ODT layer.
+
+The demo is intentionally small and anonymized.
+
+It is not meant to reproduce the full original corpus.  
+It is meant to show the processing logic:
 
 ```text
-odt/demo/input/example_improved.odt
+input document
+↓
+structured archive
+↓
+corpus layer
+↓
+traceable system artifacts
 ```
-
-This example is intentionally simple.
-
-The pipeline transforms raw documents into structured and traceable representations that can be audited and reconstructed.
 
 ---
 
-## How to Run
+## How to run
+
+Install dependencies layer by layer:
 
 ```bash
-# Install dependencies
-pip install -r odt/requirements.txt
-pip install -r meta/requirements.txt
+pip install -r 01_ODT_Document_Ingestion_and_Structuring_Layer/requirements.txt
+pip install -r 02_META_Corpus_and_Graph_Construction_Layer/requirements.txt
+```
 
-# Step 1 — Ingest and structure documents
-python odt/run_odt_v75.py
+Run the first layers:
 
-# Step 2 — Build corpus and graph
-python meta/run_meta_fusion.py
+```bash
+python 01_ODT_Document_Ingestion_and_Structuring_Layer/run_odt_v75.py
+python 02_META_Corpus_and_Graph_Construction_Layer/run_meta_fusion.py
 ```
 
 ---
@@ -140,33 +205,55 @@ python meta/run_meta_fusion.py
 
 Outputs are generated at runtime and are not included in this repository.
 
-Running the pipeline produces:
+Depending on the executed layer, the system can produce:
 
-* structured document archives
-* validation metadata
-* traceable intermediate representations
-
----
-
-## Design Principles
-
-* Deterministic processing layers
-* Full traceability
-* No implicit inference
-* Reproducible outputs
-* Separation between data and system logic
+- structured document archives
+- corpus-level JSON artifacts
+- graph-like representations
+- validation metadata
+- traceable intermediate representations
+- audit-oriented outputs
 
 ---
 
-## Notes
+## Design principles
 
-This repository focuses on system design and execution logic.
+- deterministic processing layers
+- source preservation
+- traceability by design
+- no implicit inference
+- reproducible outputs
+- separated responsibilities between layers
+- human-readable audit trail
+- validation before projection
 
-It does not include:
+---
 
-* real datasets
-* personal documents
-* production-scale outputs
+## What this is not
+
+This project is not:
+
+- a foundation model
+- an AGI system
+- a chatbot
+- a prompt collection
+- a production SaaS
+- a fully industrialized framework
+- a claim that everything was coded manually from scratch
+
+It is a public technical subset of a larger AI-assisted system architecture.
+
+---
+
+## Development note
+
+This project was developed with intensive AI assistance, including ChatGPT and Claude.
+
+My role was to design and drive the architecture, define the constraints, structure the layers, validate outputs, audit regressions, and progressively turn a complex workflow into a traceable system.
+
+The value of the project is not “AI wrote code”.
+
+The value is the system design, orchestration, validation logic, and controlled workflow around AI-generated and AI-assisted outputs.
 
 ---
 
@@ -174,11 +261,16 @@ It does not include:
 
 This project reflects a broader approach:
 
-> Building verifiable LLM systems for complex data environments.
+> building governed AI workflows that turn complex corpora into structured, traceable and human-validated outputs.
+
+Or more simply:
+
+> I do not improve prompts.  
+> I design systems that make AI outputs verifiable.
 
 ---
 
 ## Author
 
-Nicolas Roinard
-LLM Systems Architect
+Nicolas Roinard  
+LLM Systems Architect / AI Workflow Governance
