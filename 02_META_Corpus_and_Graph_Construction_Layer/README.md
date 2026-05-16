@@ -1,140 +1,97 @@
-# META_FUSION V9.2 — Script Archive
+# META: Corpus & Graph Construction Layer
 
-Archive script industrielle pour exécuter **META_FUSION V9.2 — FINAL LOCK** sur des archives **ODT V7.5 validées**.
+Merges structured documents into a global corpus and builds graph-like relationships between segments, nodes and references.
 
-## Objectif
+---
 
-Cette archive ne cherche pas à réinventer le protocole. Elle cherche à le rendre :
+## Overview
 
-- exécutable
-- transmissible
-- auditable
-- rejouable sur cas réel
-- propre pour passation
+This layer is part of a larger experimental pipeline for verifiable LLM workflows.
 
-## Pipeline implémenté
+It takes structured document archives from the ODT layer and constructs:
 
-`VALIDATION → AGREGATION → NORMALISATION → CROSS_ARCHIVE → DEDUP → CONFLICT → CORPUS → INDEX → GRAPH → DELTA → VALIDATION_FINALE`
+- a unified corpus from multiple document sources
+- graph-like relationships between segments and nodes
+- a structured index for downstream processing
 
-## Structure
+The implementation demonstrates core governance patterns:
+
+- **lineage tracking** — maintains genealogy of corpus construction
+- **reference integrity** — validates cross-reference consistency
+
+---
+
+## Purpose
+
+The META layer creates a structured data foundation for downstream analysis.
+
+Instead of treating documents as isolated text, META builds a relational layer that:
+
+- deduplicates content across archives
+- tracks segment-to-segment relationships
+- identifies conflicts and overlaps
+- creates an auditable construction trail
+- validates integrity of the resulting graph
+
+---
+
+## Implementation
+
+The layer implements a processing pipeline:
 
 ```text
-meta_fusion_v92_pipeline/
-  README.md
-  requirements.txt
-  run_meta_fusion.py
-  src/
-    utils.py
-    models.py
-    scoring.py
-    manifest.py
-    layers/
-      validation_layer.py
-      aggregation_layer.py
-      normalization_layer.py
-      cross_archive_layer.py
-      dedup_layer.py
-      conflict_layer.py
-      corpus_layer.py
-      index_layer.py
-      graph_layer.py
-      delta_layer.py
-  demo/
-    input/
-    output/
-  docs/
-    PASSATION_NOTES.md
+Input (ODT archives) 
+  → Validation
+  → Aggregation
+  → Normalization
+  → Cross-archive linking
+  → Deduplication
+  → Conflict detection
+  → Corpus construction
+  → Indexing
+  → Graph building
+  → Delta tracking
+  → Final validation
 ```
 
-## Usage
-
-Run de référence :
+Entry point:
 
 ```bash
-python run_meta_fusion.py \
-  --input demo/input \
-  --output demo/output/META_FUSION_REFERENCE_RUN \
-  --run-id SYSTEM_RUN_META_V92_REFERENCE
+python run_meta_fusion.py --input <input_dir> --output <output_dir>
 ```
 
-Run durci :
+---
 
-```bash
-python run_meta_fusion.py \
-  --input demo/input \
-  --output demo/output/META_FUSION_REFERENCE_RUN \
-  --run-id SYSTEM_RUN_META_V92_REFERENCE \
-  --strict \
-  --reproducible
-```
+## Outputs
 
-## Contrat d'entrée
+The layer produces:
 
-Chaque archive source doit fournir au minimum :
+- `META_GLOBAL_GRAPH.json` — Node and edge definitions
+- `GLOBAL_DOCUMENT_CORPUS.json` — Document and segment metadata
+- `GLOBAL_SEMANTIC_INDEX.json` — Reference index for downstream layers
+- `CHAIN_INTEGRITY_MANIFEST.json` — Audit trail and integrity validation
 
-- `GLOBAL_DOCUMENT_CORPUS.json`
-- `ARTEFACT_segments.json`
-- `CHAIN_INTEGRITY_MANIFEST.json`
-- `SOURCE_DOCUMENT_METADATA.json`
-- `ARCHIVE_MANIFEST.json`
-- `MASTER_SHA256.txt`
-- `ODT_LAYER_STATUS.json`
+---
 
-## Contrat de sortie
+## Design principles
 
-Le script écrit :
+- **No implicit inference** — only explicit aggregation and structuring
+- **Full traceability** — every element tracks its origin
+- **Reproducibility** — identical inputs produce identical outputs
+- **Auditability** — integrity manifest enables independent verification
 
-- `META_GLOBAL_GRAPH.json`
-- `GLOBAL_DOCUMENT_CORPUS.json`
-- `GLOBAL_SEMANTIC_INDEX.json`
-- `META_LAYER_STATUS.json`
-- `CHAIN_INTEGRITY_MANIFEST.json`
-- `META_DELTA_REPORT.json`
-- `MASTER_SHA256.txt`
+---
 
-## Durcissements ajoutés
+## Status
 
-Sans changer le protocole META, cette archive ajoute :
+This directory exposes the public, readable version of this layer.
 
-- un mode `--strict` qui bloque sur refs orphelines ou provenance incomplète
-- un mode `--reproducible` qui explicite l'exigence d'ordre déterministe
-- une validation d'intégrité réelle des types, scores, `node_refs`, `run_id` et `ingest_timestamp_utc`
-- une clôture manifest/master cohérente avec l'état livré
+The complete internal implementation includes additional validation, qualification, and forensic tools that are not exposed publicly.
 
-## Positionnement de cette archive
+---
 
-Cette archive est volontairement :
+## Next steps
 
-- **petite mais vraie**
-- modulaire sans sur-ingénierie
-- alignée avec le vécu forensic du chantier
-- pensée pour reprise par une autre session ou une autre personne
+The REVELATION layer consumes META outputs and performs deterministic analysis.
 
-## Limites assumées du MVP
-
-- pas d'inférence de conflits implicites
-- déduplication forte par `content_hash`
-- pas d'enrichissement sémantique décoratif
-
-Ces limites sont cohérentes avec la règle protocolaire :
-**aucune inférence implicite**.
-
-
-## Durcissements V10/10
-
-- `--fixed-timestamp` pour figer la provenance en mode reproductible.
-- Références d’index segmentaires en `REF_TYPE = NODE` vers des IDs canoniques uniques.
-- Provenance `DOCUMENT` explicitement typée avec `segment_id = __NA_DOCUMENT_NODE__`.
-- Validation amont renforcée sur `MASTER_SHA256.txt` et `CHAIN_INTEGRITY_MANIFEST.json` des archives ODT sources.
-- Séquence de clôture explicitée : outputs écrits → manifest/master → contrôle anti-mutation.
-
-
-## Reference run command
-
-```bash
-python run_meta_fusion.py \
-  --input demo/input \
-  --output demo/output/META_FUSION_REFERENCE_RUN \
-  --run-id SYSTEM_RUN_META_V92_REFERENCE_20260404T163500Z \
-  --strict --reproducible --fixed-timestamp 2026-04-04T16:35:00Z
-```
+The ENGINE layer structures final outputs from REVELATION analysis units.

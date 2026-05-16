@@ -4,6 +4,40 @@ Turning probabilistic LLM outputs into structured, traceable, and verifiable sys
 
 ---
 
+## Repository Status
+
+**This repository is a public demonstration subset of a larger personal AI-assisted research and engineering project.**
+
+It is not a complete mirror of the full internal system.
+
+The public version focuses on the readable core of the architecture:
+
+- document ingestion and structuring
+- corpus construction and graph building
+- lineage tracking and reference integrity
+- deterministic analysis and transformation
+- traceability-oriented workflow design
+
+Some advanced validation, packaging, freeze, transport and qualification layers are intentionally not exposed publicly in order to keep the repository readable, safe and focused on core architecture.
+
+The ENGINE layer is currently minimal because the complete internal implementation is tightly coupled to advanced packaging and validation infrastructure that is not suitable for this public subset.
+
+**This is intentional and correct.**
+
+---
+
+## Development
+
+This project was developed with intensive AI assistance, including ChatGPT and Claude.
+
+My role was to design and drive the architecture, define the constraints, structure the layers, validate outputs, audit regressions, and progressively turn a complex workflow into a traceable system.
+
+The value of the project is not "AI wrote code".
+
+The value is the system design, orchestration, validation logic, and controlled workflow around AI-generated and AI-assisted outputs.
+
+---
+
 ## Overview
 
 This repository presents a runnable subset of a larger AI-assisted system designed to process complex document corpora.
@@ -82,6 +116,8 @@ Entry point:
 - merges structured documents into a global corpus
 - builds graph-like relationships between segments, nodes and references
 - creates a structured data layer for downstream processing
+- demonstrates data lineage tracking (lineage_layer)
+- demonstrates reference integrity validation (reference_integrity_layer)
 
 Entry point:
 
@@ -96,11 +132,13 @@ Entry point:
 - performs controlled analysis on structured corpus artifacts
 - separates observation from interpretation
 - prepares structured analysis units for downstream projection
+- demonstrates deterministic trace closure (canonical_trace_closure_layer)
+- demonstrates pipeline bridging (engine_bundle_layer)
 
 Status:
 
 ```text
-public subset / in progress
+public subset / core layers exposed
 ```
 
 ---
@@ -109,12 +147,12 @@ public subset / in progress
 
 - structures downstream outputs from validated analysis units
 - keeps output generation separated from source ingestion and graph construction
-- supports the system’s validation-oriented workflow
+- supports the system's validation-oriented workflow
 
 Status:
 
 ```text
-public subset / in progress
+public subset / minimal (core coupling to internal validation infrastructure)
 ```
 
 ---
@@ -129,7 +167,7 @@ The broader system includes additional validation and grounding layers:
 - SESSION_MANAGER — orchestration and monitoring
 - MEMORY_GRAPH_AGENT — memory and consistency
 
-These layers are part of the broader architecture, but are not fully exposed here yet.
+These layers are part of the broader architecture, but are not fully exposed here.
 
 ---
 
@@ -153,11 +191,12 @@ verifiable-llm-pipeline/
 
   03_REVELATION_Deterministic_Analysis_and_Transformation_Layer/
     README.md
+    run_revelation.py
     src/
 
   04_ENGINE_Output_Structuring_and_Projection_Layer/
     README.md
-    src/
+    # minimal public placeholder
 ```
 
 ---
@@ -242,18 +281,6 @@ This project is not:
 - a claim that everything was coded manually from scratch
 
 It is a public technical subset of a larger AI-assisted system architecture.
-
----
-
-## Development note
-
-This project was developed with intensive AI assistance, including ChatGPT and Claude.
-
-My role was to design and drive the architecture, define the constraints, structure the layers, validate outputs, audit regressions, and progressively turn a complex workflow into a traceable system.
-
-The value of the project is not “AI wrote code”.
-
-The value is the system design, orchestration, validation logic, and controlled workflow around AI-generated and AI-assisted outputs.
 
 ---
 
