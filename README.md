@@ -4,25 +4,36 @@ Turning probabilistic LLM outputs into structured, traceable, and verifiable sys
 
 ---
 
-## Repository Status
+## Repository Status & Scope
 
 **This repository is a public demonstration subset of a larger personal AI-assisted research and engineering project.**
 
-It is not a complete mirror of the full internal system.
+It is intentionally simplified to show architecture patterns without exposing complete internal infrastructure.
 
-The public version focuses on the readable core of the architecture:
+### What's intentionally NOT included in this public subset
 
-- document ingestion and structuring
-- corpus construction and graph building
-- lineage tracking and reference integrity
-- deterministic analysis and transformation
-- traceability-oriented workflow design
+- **Complete ENGINE layer** — The internal implementation is tightly coupled to advanced validation and packaging infrastructure
+- **Execute orchestration scripts** — Full runners and orchestration are part of the private system
+- **Transport / freeze / packaging tools** — Internal infrastructure for production deployment
+- **Qualification and forensic suite** — Internal tools for comprehensive system validation
+- **E2E demo with sample outputs** — Not included in this public subset
 
-Some advanced validation, packaging, freeze, transport and qualification layers are intentionally not exposed publicly in order to keep the repository readable, safe and focused on core architecture.
+This is by design. The goal is to demonstrate architecture patterns, not to expose complete internal infrastructure.
 
-The ENGINE layer is currently minimal because the complete internal implementation is tightly coupled to advanced packaging and validation infrastructure that is not suitable for this public subset.
+### Positioning
 
-**This is intentional and correct.**
+This repository demonstrates an **architecture pattern** for AI-driven document workflows with emphasis on governance, traceability, and auditability.
+
+It is **not**:
+- A commercial product
+- A complete system (intentionally simplified for clarity)
+- A prompt engineering framework
+- A machine learning research paper
+
+It **is**:
+- A system architecture for human-in-the-loop AI workflows
+- A demonstration of governance and traceability patterns in LLM pipelines
+- A blueprint for building verifiable, auditable document processing systems
 
 ---
 
@@ -281,19 +292,6 @@ This project is not:
 - a claim that everything was coded manually from scratch
 
 It is a public technical subset of a larger AI-assisted system architecture.
-
----
-
-## Positioning
-
-This project reflects a broader approach:
-
-> building governed AI workflows that turn complex corpora into structured, traceable and human-validated outputs.
-
-Or more simply:
-
-> I do not improve prompts.  
-> I design systems that make AI outputs verifiable.
 
 ---
 

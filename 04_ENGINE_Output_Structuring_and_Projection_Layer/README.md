@@ -1,30 +1,51 @@
 # 04 — ENGINE: Output Structuring & Projection Layer
 
-**Status**: Not yet integrated into public demo.
+**Status**: Minimal public demonstration.
 
 ## Purpose
 
 This layer handles final output structuring and validation from upstream analysis units.
 
-Keeps output generation separated from source ingestion and graph construction.
+It keeps output generation separated from source ingestion, graph construction, and deterministic analysis.
 
-## Current State
+## Why This Layer Is Minimal In Public Subset
 
-Currently under development.
+The complete ENGINE implementation includes:
 
-See [main README](../../README.md) for full system architecture.
+- Advanced packaging and validation infrastructure
+- Multiple output projection patterns
+- Transport wrapper orchestration
+- Comprehensive integrity checking and forensic tools
+- Production deployment coordination
 
-## What This Layer Does
+These internal components are domain-specific and highly coupled to the broader system. They are not suitable for a general public demonstration.
 
-- Structures downstream outputs from validated analysis units
-- Maintains separation between processing and generation
-- Supports validation-oriented workflow design
+The public version of this layer demonstrates:
 
-## Integration
+- Standard layer structure (models, utils, manifest)
+- Core output layers (package, status, validation)
+- How REVELATION outputs are structured for downstream use
 
-This layer is part of the broader system architecture but is not yet exposed in the runnable demo.
+**The architectural pattern is demonstrated. The production implementation is intentionally private.**
 
-For the current runnable subset, see:
-- [01 — ODT Layer](../01_ODT_Document_Ingestion_and_Structuring_Layer/README.md)
-- [02 — META Layer](../02_META_Corpus_and_Graph_Construction_Layer/README.md)
-- [03 — REVELATION Layer](../03_REVELATION_Deterministic_Analysis_and_Transformation_Layer/README.md)
+## Design Principles
+
+- Separation of concerns (output generation separated from analysis)
+- Validation before projection
+- Traceability through the final layer
+- Structured output formats
+
+## Integration In The System
+
+This layer completes the pipeline:
+
+1. **01 — ODT** — Document Ingestion & Structuring
+2. **02 — META** — Corpus & Graph Construction
+3. **03 — REVELATION** — Deterministic Analysis & Transformation
+4. **04 — ENGINE** — Output Structuring & Projection (this layer)
+
+## What's Next
+
+For more context on the full system architecture, see the [main README](../README.md).
+
+To understand the upstream REVELATION layer which feeds this layer, see [03 — REVELATION](../03_REVELATION_Deterministic_Analysis_and_Transformation_Layer/README.md).
