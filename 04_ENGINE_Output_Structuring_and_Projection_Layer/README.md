@@ -10,23 +10,22 @@ It keeps output generation separated from source ingestion, graph construction, 
 
 ## Why This Layer Is Minimal In Public Subset
 
-The complete ENGINE implementation includes:
+The internal ENGINE implementation is part of the complete end-to-end pipeline and includes:
 
-- Advanced packaging and validation infrastructure
-- Multiple output projection patterns
-- Transport wrapper orchestration
-- Comprehensive integrity checking and forensic tools
-- Production deployment coordination
+- Advanced output projection patterns
+- Multiple formatting and transport mechanisms
+- Comprehensive validation and integrity checking
+- Audit, packaging, and domain-specific orchestration tooling
 
-These internal components are domain-specific and highly coupled to the broader system. They are not suitable for a general public demonstration.
+These internal components are highly coupled to the broader system infrastructure. They are intentionally not exposed in the public subset because they are not suitable for general use.
 
 The public version of this layer demonstrates:
 
 - Standard layer structure (models, utils, manifest)
-- Core output layers (package, status, validation)
-- How REVELATION outputs are structured for downstream use
+- Core output abstraction layers (package, status, validation)
+- How REVELATION outputs are structured for downstream consumption
 
-**The architectural pattern is demonstrated. The production implementation is intentionally private.**
+**The architectural pattern is demonstrated. The complete internal implementation is intentionally private.**
 
 ## Design Principles
 
@@ -37,7 +36,7 @@ The public version of this layer demonstrates:
 
 ## Integration In The System
 
-This layer completes the pipeline:
+This layer completes the file-level and byte-sensitive, multi-layer pipeline:
 
 1. **01 — ODT** — Document Ingestion & Structuring
 2. **02 — META** — Corpus & Graph Construction

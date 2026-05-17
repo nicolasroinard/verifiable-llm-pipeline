@@ -6,19 +6,32 @@ Turning probabilistic LLM outputs into structured, traceable, and verifiable sys
 
 ## Repository Status & Scope
 
-**This repository is a public demonstration subset of a larger personal AI-assisted research and engineering project.**
+**This repository is a public demonstration subset of a broader end-to-end pipeline.**
 
-It is intentionally simplified to show architecture patterns without exposing complete internal infrastructure.
+The internal pipeline was designed and reviewed through internal audit workflows as a file-level and byte-sensitive, multi-layer workflow:
+
+```text
+ODT → META → REVELATION → ENGINE
+```
+
+The public repository intentionally exposes only the parts that are safe, readable, and useful for demonstrating the architecture:
+
+- document ingestion and structuring
+- graph construction and corpus building
+- traceability patterns (lineage tracking, reference integrity)
+- deterministic analysis without inference
+- minimal projection layer structure
+
+This is intentional and correct.
 
 ### What's intentionally NOT included in this public subset
 
-- **Complete ENGINE layer** — The internal implementation is tightly coupled to advanced validation and packaging infrastructure
-- **Execute orchestration scripts** — Full runners and orchestration are part of the private system
-- **Transport / freeze / packaging tools** — Internal infrastructure for production deployment
-- **Qualification and forensic suite** — Internal tools for comprehensive system validation
-- **E2E demo with sample outputs** — Not included in this public subset
+- **Full internal E2E orchestration** — The complete end-to-end system exists and is reviewed through internal audit workflows, but is intentionally not published in this public subset
+- **Internal validation / freeze / transport tooling** — Kept private because it is domain-specific and tightly coupled to internal forensic packaging infrastructure
+- **Complete ENGINE implementation** — Intentionally reduced in the public repository to avoid exposing internal projection and validation infrastructure
+- **Qualification and forensic suite** — Internal tools for comprehensive system validation, not suitable for public distribution
 
-This is by design. The goal is to demonstrate architecture patterns, not to expose complete internal infrastructure.
+This is by design. The goal is to demonstrate the architecture patterns, not to expose the complete internal system infrastructure.
 
 ### Positioning
 
