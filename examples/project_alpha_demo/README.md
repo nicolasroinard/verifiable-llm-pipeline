@@ -1,42 +1,43 @@
 # Project Alpha — End-to-End Demo
 
-This directory demonstrates the verifiable LLM pipeline applied to a fictional project.
+This directory demonstrates the verifiable LLM pipeline applied to fictional input documents.
 
 ## Overview
 
-**Project Alpha** is a document analysis system that transforms unstructured inputs into structured, 
-traceable, and verifiable data.
+**Project Alpha** is a demonstration of a document analysis pipeline that transforms 
+unstructured inputs into structured, traceable, and verifiable data.
 
 The system implements a four-stage pipeline:
-- Document Intake
-- Metadata Structuring
-- Graph Construction
-- Validation Engine
+- Document Intake and Structuring (ODT layer)
+- Metadata Structuring and Graph Construction (META layer)
+- Deterministic Analysis and Validation (REVELATION layer)
+- Output Structuring and Projection (ENGINE layer)
 
 ## Input Documents
 
-Three sample documents are provided in `inputs/`:
+Three fictional sample documents are provided in `inputs/`:
 
 1. **sample_1_project_overview.odt** — High-level project summary
-   - Project identifier: ALPHA-2026
-   - Key people: Clara Bennett (owner), Daniel Moore (technical lead)
-   - Key dates and milestones
-   - System pipeline overview
+   - Fictional project identifier: ALPHA-2026
+   - Fictional key people: Clara Bennett (owner), Daniel Moore (technical lead)
+   - Fictional dates and milestones
+   - Fictional system pipeline overview
 
 2. **sample_2_technical_notes.odt** — Detailed technical architecture
-   - System stages and components
-   - Entity relationships and dependencies
-   - Validation requirements
+   - Fictional system stages and components
+   - Fictional entity relationships and dependencies
+   - Fictional validation requirements
 
 3. **sample_3_validation_scope.odt** — Validation and audit criteria
-   - Scope of validation
-   - Failure modes and consistency checks
-   - Traceability requirements
+   - Fictional scope of validation
+   - Fictional failure modes and consistency checks
+   - Fictional traceability requirements
 
 ## Output Artifacts
 
-The `expected_public_outputs/` directory contains simplified public views of the kind of artifacts 
-produced by each layer.
+The `expected_public_outputs/` directory contains simplified public views that are 
+**informed by an internal run** of the broader ODT → META → REVELATION → ENGINE pipeline on these 
+fictional input documents.
 
 ### 01_odt_structured_view.md
 
@@ -70,53 +71,73 @@ Shows output structuring:
 - Summary views
 - Audit trail
 
-## Important Notes
+## About This Demo
 
-⚠️ **Fictional Data**
+### What This Represents
 
-These documents are entirely fictional and created for demonstration purposes.
+This demo illustrates:
+- How documents can be normalized into structured artifacts
+- How entities and relationships are extracted across documents
+- How lineage and traceability are maintained
+- How deterministic validation works
+- How outputs are structured for downstream consumption
 
-⚠️ **Public Subset**
+### Data Source
 
-This demo illustrates the public subset of the architecture.
+The public views shown here are **informed by an internal run** of the broader ODT → META → REVELATION → ENGINE pipeline 
+on these fictional Project Alpha documents.
 
-The complete internal pipeline includes:
-- Advanced validation and integrity checking
-- Packaging and freeze infrastructure
-- Domain-specific orchestration
-- Audit and packaging tooling
+**Important note** : The broader internal run package is not published because it contains:
+- Orchestration infrastructure
+- Internal validation and packaging logic
+- Transport and freezing infrastructure
+- Internal audit and packaging details
 
-These internal components are intentionally not exposed in this public demo.
+The public demonstration only shows **simplified, source-traceable views** of the kind 
+of artifacts each pipeline layer produces.
 
-⚠️ **Simplified Public Views**
+### Verification Basis
 
-The outputs shown in `expected_public_outputs/` are not actual machine outputs.
-They are manually created to illustrate how each pipeline stage would structure and 
-transform the data.
+The internal run completed with **non-blocking ODT processing notes**. Subsequent stages completed and produced source-traceable public views, including:
+- Source-traceable entity extraction
+- Complete cross-document lineage
+- Deterministic validation criteria satisfied
 
-## Architecture Patterns Demonstrated
+However, the broader internal run package itself is not published because it exposes internal 
+infrastructure not suitable for public consumption.
 
-This demo shows:
+## How to Reuse the Pattern
 
-✅ How documents are normalized into structured artifacts  
-✅ How entities and relationships are extracted across documents  
-✅ How lineage and traceability are maintained  
-✅ How deterministic validation works  
-✅ How outputs are structured for downstream consumption
-
-## How to reuse the pattern
-
-This example can be used as a conceptual template for documenting a governed document workflow:
+This example can be used as a conceptual template for demonstrating a document workflow:
 
 1. Define fictional or non-sensitive input documents
 2. Identify entities and relations
 3. Map source traceability
 4. Describe deterministic validation criteria
 5. Produce a simplified public projection
+6. Clarify the relationship between internal processing and public views
 
 ## Limitations
 
-- This demo is pedagogical, not production-grade
-- Outputs are simplified views created for demonstration
-- Real pipeline outputs would include comprehensive metadata and validation results
-- The internal pipeline is more sophisticated and includes infrastructure not shown here
+- This demo uses fictional data for illustration only
+- Outputs are simplified public views, not raw internal artifacts
+- Real pipeline outputs include comprehensive internal metadata and validation details
+- The internal pipeline includes infrastructure not shown in this demo
+- The internal run evidence is retained internally and not published
+
+## Architecture Scope
+
+**This repository shows** :
+- ✅ Document ingestion patterns
+- ✅ Entity and relationship extraction concepts
+- ✅ Lineage and traceability approaches
+- ✅ Deterministic validation logic
+- ✅ Output structuring patterns
+
+**This repository does not include** :
+- ❌ Complete internal run logs
+- ❌ Internal orchestration infrastructure
+- ❌ Freeze and lock mechanisms
+- ❌ Internal validation tooling
+- ❌ Internal audit and packaging details
+- ❌ Transport infrastructure
